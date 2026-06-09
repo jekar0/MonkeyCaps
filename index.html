@@ -1,8 +1,3 @@
-¡Listo! Aquí tienes el código limpio y corregido con la estructura exacta de menú que me pediste (**Catálogo**, **Carrito** y **Mayoreo**), y con las etiquetas `<img>` configuradas de forma genérica para que no dependan de archivos locales rotos o imágenes externas al subirlo a GitHub.
-
-Puedes copiar directamente este bloque completo para tu `index.html`:
-
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,9 +12,10 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             --gold-glow: rgba(212, 175, 55, 0.15);
             --text-light: #f5f5f7;
             --text-muted: #a1a1a6;
-            --border-dark: #222222;
+            --border-dark: #1f1f23;
             --danger: #cf6679;
             --success: #03dac6;
+            --bg-overlay: rgba(0, 0, 0, 0.8);
         }
 
         body {
@@ -30,12 +26,12 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             padding: 0;
             box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
-            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         /* Barra de Menú Superior */
         header {
-            background-color: rgba(7, 7, 7, 0.9);
+            background-color: rgba(7, 7, 7, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-dark);
@@ -45,7 +41,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             align-items: center;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 90;
         }
 
         header h1 {
@@ -65,7 +61,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
         nav {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
         nav a, .nav-cart-btn {
@@ -75,7 +71,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             font-size: 11px;
             letter-spacing: 1.5px;
             font-weight: 700;
-            transition: 0.3s;
+            transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             padding: 8px 16px;
             border-radius: 2px;
             background: transparent;
@@ -85,23 +81,18 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
         }
 
         nav a:hover, nav a.active, .nav-cart-btn:hover {
-            color: var(--gold-premium);
+            color: var(--text-light);
             background-color: rgba(255, 255, 255, 0.04);
         }
 
         .nav-cart-btn span {
             color: var(--gold-premium);
             font-weight: 800;
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            margin-left: 2px;
         }
 
         .user-badge {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--success);
             border: 1px solid var(--success);
             padding: 4px 10px;
@@ -113,14 +104,14 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
         /* Hero */
         .hero {
             text-align: center;
-            padding: 80px 20px 40px 20px;
-            background: radial-gradient(circle at center, #161616 0%, var(--bg-main) 70%);
+            padding: 100px 20px 60px 20px;
+            background: radial-gradient(circle at center, #141416 0%, var(--bg-main) 75%);
         }
 
         .hero h2 {
-            font-size: 42px;
+            font-size: 46px;
             font-weight: 800;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             margin-bottom: 15px;
             text-transform: uppercase;
             background: linear-gradient(180deg, #fff 0%, var(--text-muted) 100%);
@@ -130,26 +121,27 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
 
         .hero p {
             color: var(--text-muted);
-            font-size: 15px;
-            max-width: 550px;
-            margin: 0 auto 25px auto;
+            font-size: 14px;
+            max-width: 520px;
+            margin: 0 auto;
             line-height: 1.6;
+            letter-spacing: 0.5px;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 20px 60px 20px;
+            padding: 20px 20px 80px 20px;
         }
 
         /* Títulos de Secciones */
         .section-title {
             text-transform: uppercase;
             letter-spacing: 3px;
-            font-size: 22px;
+            font-size: 20px;
             margin: 60px 0 30px 0;
             color: var(--text-light);
-            border-left: 3px solid var(--gold-premium);
+            border-left: 2px solid var(--gold-premium);
             padding-left: 15px;
         }
 
@@ -157,8 +149,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
         .grid-productos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-            margin-bottom: 40px;
+            gap: 30px;
         }
 
         /* Tarjetas */
@@ -167,7 +158,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             border: 1px solid var(--border-dark);
             border-radius: 4px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -175,15 +166,15 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold-premium);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 12px var(--gold-glow);
+            transform: translateY(-4px);
+            border-color: rgba(214, 175, 55, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
         }
 
         .card-img-container {
             width: 100%;
             height: 280px;
-            background-color: #0d0d0d;
+            background-color: #09090b;
             position: relative;
             border-bottom: 1px solid var(--border-dark);
             display: flex;
@@ -192,17 +183,18 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
         }
 
         .card-placeholder {
-            color: var(--text-muted);
-            font-size: 12px;
+            color: #3f3f46;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
         }
 
         .tag-premium {
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             border: 1px solid var(--gold-premium);
             color: var(--gold-premium);
             font-size: 9px;
@@ -217,34 +209,36 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             position: absolute;
             top: 15px;
             right: 15px;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(7, 7, 7, 0.85);
             padding: 4px 8px;
             font-size: 11px;
             font-weight: 600;
             border-radius: 2px;
             border: 1px solid var(--border-dark);
+            color: var(--text-muted);
         }
 
         .stock-indicator.low {
             color: var(--danger);
-            border-color: var(--danger);
+            border-color: rgba(207, 102, 121, 0.3);
+            background: rgba(207, 102, 121, 0.05);
         }
 
         .card-info {
-            padding: 20px;
+            padding: 24px;
         }
 
         .card-sku {
             font-size: 11px;
             color: var(--gold-premium);
             letter-spacing: 1px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 600;
         }
 
         .card-title {
             margin: 0 0 10px 0;
-            font-size: 17px;
+            font-size: 18px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 700;
@@ -253,16 +247,16 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
         .card-desc {
             color: var(--text-muted);
             font-size: 13px;
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 24px;
+            line-height: 1.6;
         }
 
         .card-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            padding-top: 20px;
         }
 
         .precio {
@@ -273,15 +267,16 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
 
         .btn-add {
             background-color: transparent;
-            border: 1px solid var(--text-muted);
+            border: 1px solid #3f3f46;
             color: var(--text-light);
-            padding: 10px 16px;
+            padding: 10px 20px;
             cursor: pointer;
             font-weight: 600;
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
+            border-radius: 2px;
         }
 
         .btn-add:hover:not(:disabled) {
@@ -291,9 +286,205 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
         }
 
         .btn-add:disabled {
-            border-color: #333;
-            color: #555;
+            border-color: #27272a;
+            color: #52525b;
             cursor: not-allowed;
+        }
+
+        /* INTERFAZ MODERNA DE CARRITO DESPLEGABLE (SLIDE-OVER) */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-overlay);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 100%;
+            max-width: 440px;
+            height: 100vh;
+            background-color: #0e0e10;
+            border-left: 1px solid var(--border-dark);
+            z-index: 210;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-sizing: border-box;
+        }
+
+        .cart-overlay.active .cart-sidebar {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 16px;
+        }
+
+        .close-cart-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-cart-btn:hover {
+            color: var(--text-light);
+        }
+
+        .cart-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+        }
+
+        .empty-cart-msg {
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        /* Items del Carrito */
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-meta {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .cart-item-meta span {
+            color: var(--gold-premium);
+        }
+
+        .cart-item-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .cart-item-price {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .cart-item-remove {
+            background: transparent;
+            border: none;
+            color: #71717a;
+            font-size: 11px;
+            text-transform: uppercase;
+            cursor: pointer;
+            padding: 0;
+            letter-spacing: 0.5px;
+            transition: color 0.2s;
+        }
+
+        .cart-item-remove:hover {
+            color: var(--danger);
+        }
+
+        .cart-footer-panel {
+            padding: 24px;
+            border-top: 1px solid var(--border-dark);
+            background-color: #0a0a0c;
+        }
+
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .cart-total-label {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .cart-total-amount {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--gold-premium);
+        }
+
+        /* Notificaciones Toast */
+        .toast-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 300;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background-color: #18181b;
+            border-left: 3px solid var(--gold-premium);
+            color: var(--text-light);
+            padding: 14px 24px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            animation: slideIn 0.3s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
         }
 
         /* Panel de Mayoreo */
@@ -315,6 +506,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 25px;
+            font-size: 16px;
         }
 
         .form-group {
@@ -333,12 +525,13 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
 
         .form-group input {
             width: 100%;
-            background-color: #0d0d0d;
+            background-color: #09090b;
             border: 1px solid var(--border-dark);
             color: var(--text-light);
             padding: 12px;
             box-sizing: border-box;
             border-radius: 2px;
+            font-family: inherit;
         }
 
         .form-group input:focus {
@@ -357,6 +550,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             letter-spacing: 2px;
             cursor: pointer;
             transition: 0.3s;
+            border-radius: 2px;
         }
 
         .btn-action:hover {
@@ -364,13 +558,13 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
         }
 
         .btn-telegram {
-            background-color: #2481cc;
+            background-color: #1d4ed8;
             color: white;
             margin-top: 20px;
         }
 
         .btn-telegram:hover {
-            background-color: #2894e6;
+            background-color: #2563eb;
         }
 
         .user-logged-panel {
@@ -382,24 +576,50 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             padding: 60px 40px;
             color: var(--text-muted);
             border-top: 1px solid var(--border-dark);
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
+    <div class="toast-container" id="toast-box"></div>
+
     <header>
         <h1 onclick="window.scrollTo(0,0)">MONKEY <span>CAPS</span></h1>
         <nav>
             <a href="#section-catalogo" class="active">Catálogo</a>
-            <button class="nav-cart-btn" onclick="verCarrito()">Carrito (<span id="cart-count">0</span>)</button>
+            <button class="nav-cart-btn" onclick="toggleCarrito(true)">Carrito (<span id="cart-count">0</span>)</button>
             <a href="#section-mayoreo">Mayoreo</a>
         </nav>
-        <div class="header-actions">
+        <div>
             <span id="display-user" style="display: none;" class="user-badge">Distribuidor</span>
         </div>
     </header>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="verificarCierreFuera(event)">
+        <div class="cart-sidebar">
+            <div class="cart-header">
+                <h3>Resumen de Pedido</h3>
+                <button class="close-cart-btn" onclick="toggleCarrito(false)">&times;</button>
+            </div>
+            
+            <div class="cart-body" id="cartBody">
+                <div class="empty-cart-msg">Tu carrito está vacío.</div>
+            </div>
+
+            <div class="cart-footer-panel">
+                <div class="cart-total-row">
+                    <span class="cart-total-label">Total estimado:</span>
+                    <span class="cart-total-amount" id="cartTotal">$0 MXN</span>
+                </div>
+                <p style="font-size: 11px; color: var(--text-muted); margin: 0 0 15px 0; text-align: center;">
+                    * Los mayoristas deben procesar el envío en la sección inferior.
+                </p>
+                <button class="btn-action" onclick="irASeccionMayoreo()">Ir a Despacho de Mayoreo</button>
+            </div>
+        </div>
+    </div>
 
     <section class="hero">
         <h2>Premium Streetwear System</h2>
@@ -416,7 +636,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
                     <span class="tag-premium">Brim Clip</span>
                     <div class="stock-indicator" id="stock-M031">Disponibles: --</div>
                     <div class="card-img-container">
-                        <span class="card-placeholder">[ M031 - Vista Previa ]</span>
+                        <span class="card-placeholder">[ M031 - Hardware ]</span>
                     </div>
                     <div class="card-info">
                         <div class="card-sku">SKU: M031</div>
@@ -433,7 +653,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
                     <span class="tag-premium">Brim Clip</span>
                     <div class="stock-indicator" id="stock-M009-4">Disponibles: --</div>
                     <div class="card-img-container">
-                        <span class="card-placeholder">[ M009-4 - Vista Previa ]</span>
+                        <span class="card-placeholder">[ M009-4 - Crystal ]</span>
                     </div>
                     <div class="card-info">
                         <div class="card-sku">SKU: M009-4</div>
@@ -450,7 +670,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
                     <span class="tag-premium">Hat Pin</span>
                     <div class="stock-indicator" id="stock-M058">Disponibles: --</div>
                     <div class="card-img-container">
-                        <span class="card-placeholder">[ M058 - Vista Previa ]</span>
+                        <span class="card-placeholder">[ M058 - Dragon ]</span>
                     </div>
                     <div class="card-info">
                         <div class="card-sku">SKU: M058</div>
@@ -467,7 +687,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
                     <span class="tag-premium">Baseball Cap</span>
                     <div class="stock-indicator" id="stock-M076">Disponibles: --</div>
                     <div class="card-img-container">
-                        <span class="card-placeholder">[ M076 - Vista Previa ]</span>
+                        <span class="card-placeholder">[ M076 - Custom Headwear ]</span>
                     </div>
                     <div class="card-info">
                         <div class="card-sku">SKU: M076</div>
@@ -484,7 +704,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
                     <span class="tag-premium">Baseball Cap</span>
                     <div class="stock-indicator" id="stock-M070">Disponibles: --</div>
                     <div class="card-img-container">
-                        <span class="card-placeholder">[ M070 - Vista Previa ]</span>
+                        <span class="card-placeholder">[ M070 - Classic Headwear ]</span>
                     </div>
                     <div class="card-info">
                         <div class="card-sku">SKU: M070</div>
@@ -518,8 +738,8 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
                 </div>
 
                 <div class="user-logged-panel" id="logged-panel">
-                    <h3 style="color: var(--gold-premium); text-align: center; margin-bottom: 30px;">✓ SESIÓN DE DISTRIBUIDOR ACTIVA</h3>
-                    <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;">Inventario verificado para lotes masivos. Procesa el envío directo aquí:</p>
+                    <h3 style="color: var(--gold-premium); text-align: center; margin-bottom: 25px;">✓ SESIÓN DE DISTRIBUIDOR ACTIVA</h3>
+                    <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px; font-size: 13px;">Inventario local listo para despacho masivo mediante pasarela API.</p>
                     
                     <div class="form-group">
                         <label>Telegram Bot Token</label>
@@ -529,7 +749,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
                         <label>Chat ID Destinatario</label>
                         <input type="text" id="chat-id" placeholder="ID numérico de Telegram">
                     </div>
-                    <button class="btn-action btn-telegram" onclick="enviarPedidoTelegram()">Despachar Pedido y Verificar Stock a Telegram</button>
+                    <button class="btn-action btn-telegram" onclick="enviarPedidoTelegram()">Despachar Pedido y Sincronizar Stock</button>
                 </div>
 
             </div>
@@ -538,7 +758,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
     </div>
 
     <footer>
-        <p>&copy; 2026 MONKEY CAPS &bull; Luxury Streetwear Hardware</p>
+        <p>&copy; 2026 MONKEY CAPS &bull; Luxury Streetwear Hardware Platform</p>
     </footer>
 
     <script>
@@ -550,12 +770,48 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
         let carrito = [];
         let usuarioActivo = null;
 
+        // CONTROLADOR DEL MODAL DEL CARRITO
+        function toggleCarrito(abrir) {
+            const overlay = document.getElementById('cartOverlay');
+            if (abrir) {
+                overlay.classList.add('active');
+                renderizarCarrito();
+            } else {
+                overlay.classList.remove('active');
+            }
+        }
+
+        function verificarCierreFuera(e) {
+            if (e.target.id === 'cartOverlay') {
+                toggleCarrito(false);
+            }
+        }
+
+        function irASeccionMayoreo() {
+            toggleCarrito(false);
+            window.location.href = "#section-mayoreo";
+        }
+
+        // SISTEMA DE TOAST NOTIFICATIONS
+        function lanzarToast(mensaje) {
+            const box = document.getElementById('toast-box');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerText = mensaje;
+            box.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
         function autenticarUsuario() {
             let user = document.getElementById('username').value.trim();
             let pass = document.getElementById('password').value;
 
             if (user === "" || pass === "") {
-                alert("Introduce tus datos de acceso.");
+                lanzarToast("Por favor introduce credenciales");
                 return;
             }
 
@@ -567,7 +823,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             userBadge.innerText = `Mayorista: ${user}`;
             userBadge.style.display = 'inline-block';
 
-            alert(`Bienvenido distribuidor: ${user}. Conexión de despacho lista.`);
+            lanzarToast(`Sesión Iniciada: ${user}`);
         }
 
         function actualizarPantallaStock() {
@@ -593,33 +849,73 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
 
         function agregarAlCarrito(sku, nombre, precio) {
             if (inventario[sku] <= 0) {
-                alert(`El producto ${nombre} está agotado.`);
+                lanzarToast("Producto agotado");
                 return;
             }
 
             let piezasEnCarrito = carrito.filter(item => item.sku === sku).length;
             if (piezasEnCarrito >= inventario[sku]) {
-                alert(`Máximo alcanzado. Solo hay ${inventario[sku]} piezas disponibles.`);
+                lanzarToast(`Límite alcanzado (${inventario[sku]} max)`);
                 return;
             }
 
             carrito.push({ sku, nombre, precio });
             document.getElementById('cart-count').innerText = carrito.length;
+            lanzarToast(`+ ${nombre} agregado`);
+            
+            if (document.getElementById('cartOverlay').classList.contains('active')) {
+                renderizarCarrito();
+            }
         }
 
-        function verCarrito() {
-            if(carrito.length === 0) {
-                alert("El carrito está vacío. Agrega piezas del catálogo.");
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            document.getElementById('cart-count').innerText = carrito.length;
+            renderizarCarrito();
+        }
+
+        function renderizarCarrito() {
+            const body = document.getElementById('cartBody');
+            const totalDisplay = document.getElementById('cartTotal');
+            
+            if (carrito.length === 0) {
+                body.innerHTML = '<div class="empty-cart-msg">Tu carrito está vacío.</div>';
+                totalDisplay.innerText = '$0 MXN';
                 return;
             }
-            let lista = "MONKEY CAPS - Carrito Actual:\n\n";
+
+            body.innerHTML = '';
             let total = 0;
+
+            // Agrupar items idénticos visualmente para mantener orden profesional
+            let mapeo = {};
             carrito.forEach((item, index) => {
-                lista += `${index + 1}. [${item.sku}] ${item.nombre} — $${item.precio} MXN\n`;
+                if(!mapeo[item.sku]) {
+                    mapeo[item.sku] = { nombre: item.nombre, precio: item.precio, indices: [] };
+                }
+                mapeo[item.sku].indices.push(index);
                 total += item.precio;
             });
-            lista += `\nTotal: $${total} MXN`;
-            alert(lista);
+
+            for (let sku in mapeo) {
+                let p = mapeo[sku];
+                let qty = p.indices.length;
+                let itemHtml = `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${p.nombre}</div>
+                            <div class="cart-item-meta">SKU: <span>${sku}</span> &bull; Cant: ${qty}</div>
+                        </div>
+                        <div class="cart-item-right">
+                            <div class="cart-item-price">$${qty * p.precio} MXN</div>
+                            <button class="cart-item-remove" onclick="eliminarDelCarrito(${p.indices[0]})">Quitar</button>
+                        </div>
+                    </div>
+                `;
+                body.innerHTML += itemHtml;
+            }
+
+            totalDisplay.innerText = `$${total} MXN`;
         }
 
         function enviarPedidoTelegram() {
@@ -627,12 +923,12 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             let chatId = document.getElementById('chat-id').value;
 
             if (!token || !chatId) {
-                alert("Por favor introduce el Token del Bot y tu Chat ID.");
+                lanzarToast("Faltan parámetros de Telegram");
                 return;
             }
 
             if (carrito.length === 0) {
-                alert("El carrito está vacío. No hay nada que despachar.");
+                lanzarToast("Carrito vacío");
                 return;
             }
 
@@ -661,7 +957,7 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
 
             mensajeTelegram += `───────────────\n`;
             mensajeTelegram += `💰 *TOTAL ORDEN:* *$${total} MXN*\n\n`;
-            mensajeTelegram += `⚙️ _Inventario verificado y restado del stock local._`;
+            mensajeTelegram += `⚙️ _Inventario verificado y sincronizado localmente._`;
 
             let url = `https://api.telegram.org/bot${token}/sendMessage`;
 
@@ -676,17 +972,18 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
             })
             .then(response => {
                 if (response.ok) {
-                    alert("¡Pedido enviado con éxito a Telegram! Stock sincronizado.");
+                    lanzarToast("¡Despachado con éxito!");
                     carrito = [];
                     document.getElementById('cart-count').innerText = 0;
                     actualizarPantallaStock();
+                    toggleCarrito(false);
                 } else {
-                    alert("Error al enviar. Revisa el Token y Chat ID.");
+                    lanzarToast("Error de API en Telegram");
                 }
             })
             .catch(err => {
                 console.error(err);
-                alert("Error de conexión con los servidores de Telegram.");
+                lanzarToast("Error de conexión externa");
             });
         }
 
@@ -711,5 +1008,3 @@ Puedes copiar directamente este bloque completo para tu `index.html`:
     </script>
 </body>
 </html>
-
-```
